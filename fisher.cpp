@@ -3,6 +3,7 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
 //           PLINK (c) 2005-2009 Shaun Purcell                  //
+//                 (c) 2014 Jack Poulson
 //                                                              //
 // This file is distributed under the GNU General Public        //
 // License, Version 2.  Please see the file COPYING for more    //
@@ -105,7 +106,7 @@ static void f10act(int *nrow, int *irow, int *ncol, int *icol,
 		     double *val, int *xmin, double *fact, int *nd,
 		     int *ne, int *m);
 static void f11act(int *irow, int *i1, int *i2, int *knew);
-static void prterr(int icode, char *mes);
+static void prterr(int icode, const char *mes);
 static int iwork(int iwkmax, int *iwkpt, int number, int itype);
 
 #ifdef USING_R
@@ -1962,7 +1963,7 @@ f11act(int *irow, int *i1, int *i2, int *knew)
     return;
 }
 
-void prterr(int icode, char *mes)
+void prterr(int icode, const char *mes)
 { error("FEXACT error "+int2str(icode)); }
 
 /*

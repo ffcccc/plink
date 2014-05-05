@@ -4,6 +4,7 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
 //           PLINK (c) 2005-2008 Shaun Purcell                  //
+//                 (c) 2014 Jack Poulson
 //                                                              //
 // This file is distributed under the GNU General Public        //
 // License, Version 2.  Please see the file COPYING for more    //
@@ -768,11 +769,11 @@ vector_t Set::profileTestScore()
       //////////////////////////////////////////////
       // Reset original missing status
 
-      vector<Individual*>::iterator i = PP->sample.begin();
-      while ( i != PP->sample.end() )
+      vector<Individual*>::iterator iter = PP->sample.begin();
+      while ( iter != PP->sample.end() )
 	{
-	  (*i)->missing = (*i)->flag;
-	  ++i;
+	  (*iter)->missing = (*iter)->flag;
+	  ++iter;
 	}
 
       ////////////////////////////////////////////////

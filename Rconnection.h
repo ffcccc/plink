@@ -1,6 +1,7 @@
 /*
  *  C++ Interface to Rserve
  *  Copyright (C) 2004-8 Simon Urbanek, All rights reserved.
+ *  Copyright (C) 2014 Jack Poulson, All rights reserved.
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -116,7 +117,7 @@ public:
 protected:
     // the next two are only cached if requested, no direct access allowed
     int attribs; 
-    char **attrnames;
+    const char **attrnames;
     
     Rexp *master; // if this is set then this Rexp allocated the memory for us, so we are not supposed to free anything; if this is set to "this" then the content is self-allocated, including any data
     int rcount;  // reference count - only for a master - it counts how many children still exist
@@ -135,7 +136,7 @@ public:
     
     virtual void store(char *buf);
     Rexp *attribute(const char *name);
-    char **attributeNames();
+    const char **attributeNames();
     
     virtual Rsize_t length() { return len; }
     
@@ -196,7 +197,7 @@ private:
 
 class Rsymbol : public Rexp {
 protected:
-    char *name;
+    const char *name;
     
 public:
     Rsymbol(Rmessage *msg) : Rexp(msg)
@@ -205,7 +206,7 @@ public:
     Rsymbol(unsigned int *ipos, Rmessage *imsg) : Rexp(ipos, imsg)
     { name=""; fix_content(); }
     
-    char *symbolName() { return name; }
+    const char *symbolName() { return name; }
     
     virtual std::ostream& os_print (std::ostream& os) {
         return os << "Rsymbol[" << symbolName() <<"]";

@@ -3,6 +3,7 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
 //           PLINK (c) 2005-2009 Shaun Purcell                  //
+//                 (c) 2014 Jack Poulson
 //                                                              //
 // This file is distributed under the GNU General Public        //
 // License, Version 2.  Please see the file COPYING for more    //
@@ -1175,10 +1176,10 @@ void Plink::elfBaseline()
 	  << setw(8) << gcnt << " "
 	  << setw(8) << (double)cnt / (double)gcnt << "\n";
 
-      map<int,int>::iterator i = chr_cnt.begin();
-      while ( i != chr_cnt.end() )
+      map<int,int>::iterator iter = chr_cnt.begin();
+      while ( iter != chr_cnt.end() )
 	{
-	  int c = i->first;
+	  int c = iter->first;
 	  int x = chr_cnt.find( c )->second;
 	  int y = chr_gcnt.find( c )->second;
 	  
@@ -1189,7 +1190,7 @@ void Plink::elfBaseline()
 	      << setw(8) << y << " "
 	      << setw(8) << (double)x / (double)y << "\n";
 	  
-	  ++i;
+	  ++iter;
 	}
       
     }

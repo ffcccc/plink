@@ -3,6 +3,7 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
 //           PLINK (c) 2005-2009 Shaun Purcell                  //
+//                 (c) 2014 Jack Poulson
 //                                                              //
 // This file is distributed under the GNU General Public        //
 // License, Version 2.  Please see the file COPYING for more    //
@@ -772,12 +773,12 @@ void IDHelper::idHelp()
       for (int j = 0 ; j < jointField.size(); j++ )
 	{
 	  set<IDField*> & jf = jointField[j];
-	  set<IDField*>::iterator j = jf.begin();
+	  set<IDField*>::iterator iter = jf.begin();
 	  PP->printLOG(" { ");
-	  while ( j != jf.end() )
+	  while ( iter != jf.end() )
 	    {
-	      PP->printLOG( (*j)->name + " " );
-	      ++j;
+	      PP->printLOG( (*iter)->name + " " );
+	      ++iter;
 	    }
 	  PP->printLOG(" }");
 	}

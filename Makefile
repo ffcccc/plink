@@ -164,4 +164,4 @@ $(OUTPUT) : $(OBJ)
 FORCE:
 
 clean:
-	rm -f *.o *~
+	rm -f *.o *~ plink plink.log .pversion
